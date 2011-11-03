@@ -12,7 +12,7 @@ class Sidebar extends Spine.Controller
     
   events:
     'keyup input': 'filter'
-    'click footer button': 'create'
+    'click footer button': 'refresh'
   
   constructor: ->
     super
@@ -41,8 +41,7 @@ class Sidebar extends Spine.Controller
   change: (item) =>
     @navigate '/lists', item.id
  
-  create: ->
-    item = TList.create()
-    @navigate('/lists', item.id, 'edit')
+  refresh: ->
+    TList.get_all('dds1024')
     
 module.exports = Sidebar

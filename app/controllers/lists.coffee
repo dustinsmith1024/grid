@@ -27,7 +27,10 @@ class TLists extends Spine.Controller
     
     @append @sidebar, divide, @main
     
-    #Contact.fetch()
-    TList.get_all('dds1024')
+    TList.fetch()
+    console.log(TList.count())
+    if TList.count() is 0
+      console.log('fetching lists')
+      TList.get_all('dds1024')
 
 module.exports = TLists
