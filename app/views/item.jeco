@@ -1,0 +1,3 @@
+<div class="item">
+  <%= @name or "No Name" %>
+</div>

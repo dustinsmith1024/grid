@@ -1,0 +1,12 @@
+<div id="views">
+  <div id="lists">
+    <h1>Lists</h1>
+
+    <div class="items"></div>
+
+    <footer>
+      <a class="clear">Refresh?</a>
+      <div class="count"><span class="countVal"></span> left</div>
+    </footer>
+  </div>
+</div>
