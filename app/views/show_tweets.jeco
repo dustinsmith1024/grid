@@ -1,4 +1,4 @@
 <div class="item tweetee">
-  <p><img src="<%= @user.profile_image_url %>" /><%= @user.name	 %>: <%= @text %> <%= @created_at %>
+  <p><img src="<%= @user.profile_image_url %>" /><%= @user.name	 %>: <%- @text %> <%= @created_at %>
   </p>
 </div>

@@ -21,14 +21,14 @@ class TList extends Spine.Model
           l.getImage()
 
   getImage: ->
-    console.log('get image')
     list = @
-    $.getJSON "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=502e17b32ed0e5e3551e348f84874e7a&tags="+@name+"&per_page=1&page=1&format=json&nojsoncallback=1", (data) ->
+    $.getJSON "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=cca4e5c768a106ef85d2a19e22f8222d&tags="+@name+"&per_page=1&page=1&format=json&nojsoncallback=1", (data) ->
       if data.photos.pages is 0
-        console.log 'no images', list.slug, list.name
+        list.img = "question_mark.jpg"
+        list.save()
       else
         id = data.photos.photo[0].id
-        $.getJSON "http://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=502e17b32ed0e5e3551e348f84874e7a&photo_id=" + id + "&format=json&nojsoncallback=1", (photo) ->
+        $.getJSON "http://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=cca4e5c768a106ef85d2a19e22f8222d&photo_id=" + id + "&format=json&nojsoncallback=1", (photo) ->
           list.img = photo.sizes.size[0].source
           console.log "image", list.img
           list.save()

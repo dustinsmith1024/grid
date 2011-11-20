@@ -15,6 +15,12 @@
       var App = require("index");
       exports.app = new App({el: $("#article")});    
     });
+    $(function() {
+    $("body").delegate('.tweetee a','click', function(e){
+      window.open( $(this).attr('href') );
+      e.preventDefault();
+    });
+    });
   </script>
   
 </head>

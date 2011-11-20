@@ -24,11 +24,22 @@ class Show extends Spine.Controller
       dataType: 'jsonp',
       success: (data) =>
         #console.log tweet for tweet in data
+        #data.text = @linkify(data.text)
+        data = @parse_links(data)
         @html require('views/show_tweets')(data)
 
     #@item = TList.find(params.id)
     #@render()
-    
+
+  parse_links: (tweets) ->
+    for tweet in tweets
+      tweet.text = @linkify(tweet.text)
+    tweets
+
+  linkify: (text) ->
+    exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig
+    text.replace(exp,"<a href='$1'>$1</a>")
+
   edit: ->
     @navigate('/lists', @item.id, 'edit')
 
